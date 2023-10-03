@@ -1,0 +1,6 @@
+data calls
+    states/years
+    year -> total
+
+Other possible ideas
+    generate file with selected data
