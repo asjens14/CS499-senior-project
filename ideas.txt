@@ -2,5 +2,11 @@ data calls
     states/years
     year -> total
 
+api endpoints to use
+    https://api.usaspending.gov/api/v2/recipient/state/{fip}/{?year}
+    https://api.usaspending.gov/api/v2/agency/{toptier_code}/{?fiscal_year}
+    https://api.usaspending.gov/api/v2/references/toptier_agencies/?order=asc
+    https://api.usaspending.gov/api/v2/references/total_budgetary_resources//{?fiscal_year,fiscal_period}
+
 Other possible ideas
     generate file with selected data

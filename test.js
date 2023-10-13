@@ -1,10 +1,25 @@
-fetch('https://api.usaspending.gov/api/v2/recipient/state/')
+fetch('https://api.usaspending.gov/api/v2/references/toptier_agencies/?order=asc')
     .then((response) => response.json())
     .then((json) => displayData(json))
     .catch((error) => console.error(`Error fetching data: ${error.message}`));
 
     function displayData(json) {
-        console.log(json)
+        console.log((json['results']).length)
+        agencies = []
+        for (i=0; i<(json['results']).length; i++) {
+            k = json['results'][i]['toptier_code']
+            v = json['results'][i]['abbreviation']
+            agencies.push({[k]:v})
+        }
+        console.log(agencies)
+        // for (item in json['results']){
+        //     k = json['toptier_code']
+        //     console.log(k)
+        //     v = json['abbreviation']
+        //     agencies.push({k:v})
+            
+        // }
+        // console.log(agencies)
         // console.log(json['name'])
         // console.log(json['population'])
         // console.log(json['pop_year'])
@@ -18,3 +33,4 @@ states = {
     NJ:'34',NM:'35',NV:'32',NY:'36',OH:'39',OK:'40',OR:'41',PA:'42',RI:'44',SC:'45',
     SD:'46',TN:'47',TX:'48',UT:'49',VA:'51',VT:'50',WA:'53',WI:'55',WV:'54',WY:'56'
 }
+topTierAgencies = {}
