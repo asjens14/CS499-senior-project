@@ -1,17 +1,18 @@
-fetch('https://api.usaspending.gov/api/v2/references/toptier_agencies/?order=asc')
+fetch('https://api.usaspending.gov/api/v2/recipient/state/41/')
     .then((response) => response.json())
     .then((json) => displayData(json))
     .catch((error) => console.error(`Error fetching data: ${error.message}`));
 
     function displayData(json) {
-        console.log((json['results']).length)
-        agencies = []
-        for (i=0; i<(json['results']).length; i++) {
-            k = json['results'][i]['toptier_code']
-            v = json['results'][i]['abbreviation']
-            agencies.push({[k]:v})
-        }
-        console.log(agencies)
+        console.log(json)
+        // console.log((json['results']).length)
+        // agencies = []
+        // for (i=0; i<(json['results']).length; i++) {
+        //     k = json['results'][i]['toptier_code']
+        //     v = json['results'][i]['abbreviation']
+        //     agencies.push({[k]:v})
+        // }
+        // console.log(agencies)
         // for (item in json['results']){
         //     k = json['toptier_code']
         //     console.log(k)
