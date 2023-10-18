@@ -33,6 +33,10 @@
   padding: 0px;
 }
 
+.centered{
+  text-align: center;
+}
+
 
 .form {
   max-width: 500px;
