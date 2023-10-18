@@ -6,8 +6,8 @@ const Navbar = () => {
       <h1>Spending Go Up</h1>
       <div>
         <a>State</a>
-        <a>All States</a>
-        <a href="/about">About</a>
+        <Link to='state-compare'>State Compare</Link>
+        <Link to="/about">About</Link>
 
       </div>
     </nav>
