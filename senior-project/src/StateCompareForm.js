@@ -41,7 +41,8 @@ const StateCompareForm = () => {
     })
     .catch((error) => console.error(`Error fetching data: ${error.message}`));
 
-    // that sweet, sweet jank, because it doesnt update immediately
+    // that sweet, sweet jank, because it doesnt update immediately, and I don't
+    // know how to fix it. For now, this works
     setTimeout(()=> {
     setData(nData)
     
