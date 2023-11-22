@@ -25,7 +25,7 @@ const Graph = ({data, width}) => {
         }).format(value)}
       />
       <Tooltip />
-      <Bar dataKey="num" fill="#8884d8" />
+      <Bar dataKey="num" fill="#1ce36d" />
     </BarChart>
   </div>
   );
