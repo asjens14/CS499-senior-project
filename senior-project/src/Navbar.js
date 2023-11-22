@@ -7,7 +7,7 @@ const Navbar = () => {
       <div>        
         <Link to='state-compare'>State Compare</Link>
         <Link to='year-compare'>Year Compare</Link>
-        <a href="">More</a>
+        <a>More</a>
         <Link to="/about">About</Link>
 
       </div>
