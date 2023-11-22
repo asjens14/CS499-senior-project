@@ -3,7 +3,25 @@ import Graph from "./Graph";
 
 const YearCompareForm = () => {
   // const [year,setYear] = useState(null);
-  const [ndata,setData] = useState([]);
+  const [ndata,setData] = useState([
+    {num: 4123874681.64, val:'2008'},
+    {num: 6640048390.84, val:'2009'},
+    {num: 6545982736.8, val:'2010'},
+    {num: 6517527426.92, val:'2011'},
+    {num: 6864100069.5, val:'2012'},
+    {num: 6035327242.2, val:'2013'},
+    {num: 6898289232.08, val:'2014'},
+    {num: 7290975135.11, val:'2015'},
+    {num: 7331885742.97, val:'2016'},
+    {num: 8811651202.85, val:'2017'},
+    {num: 9809112430.4, val:'2018'},
+    {num: 10338318244.66, val:'2019'},
+    {num: 16667311410.84, val:'2020'},
+    {num: 18620467248.37, val:'2021'},
+    {num: 15028166196.96, val:'2022'},
+    {num: 15482309326.72, val:'2023'},
+    {num: 1429923712.33, val:'2024'}
+  ]);
   const [state,setState] = useState('AK')
 
   let year = 2008;
