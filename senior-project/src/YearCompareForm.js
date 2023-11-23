@@ -24,8 +24,6 @@ const YearCompareForm = () => {
   ]);
   const [state,setState] = useState('AK')
 
-  let year = 2008;
-  let index = 0;
 
     async function getData(e) {
       e.preventDefault();
@@ -135,9 +133,7 @@ const YearCompareForm = () => {
       </div>
       <div className="content">
         <Graph data={ndata} width={1000}/>
-      </div>
-      
-      
+      </div>      
     </div>
   );
 }
