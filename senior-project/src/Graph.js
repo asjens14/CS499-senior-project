@@ -1,13 +1,10 @@
 import { BarChart, Bar, CartesianGrid, XAxis, YAxis, Tooltip} from 'recharts';
 
 const Graph = ({data, width}) => {
+  
   return (
     <div style={{overflowX:'scroll',width:'90%'}}>
-    <BarChart
-      width={width}
-      height={400}
-      data={data}
-      margin={{
+    <BarChart width={width} height={400} data={data} margin={{
         top: 5,
         right: 30,
         left: 20,
@@ -25,7 +22,7 @@ const Graph = ({data, width}) => {
         }).format(value)}
       />
       <Tooltip />
-      <Bar dataKey="num" fill="#1ce36d" />
+      <Bar dataKey="num" fill="#82ca9d" />
     </BarChart>
   </div>
   );
