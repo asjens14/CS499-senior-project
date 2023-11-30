@@ -4,6 +4,7 @@ import Home from './Home';
 import StateCompareForm from './StateCompareForm';
 import YearCompareForm from './YearCompareForm';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import Agencies from './Agencies';
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
             </Route>
             <Route exact path='/about'>
               <AboutPage/>
+            </Route>
+            <Route exact path='/agency-spending'>
+              <Agencies/>
             </Route>
 
           </Switch>
