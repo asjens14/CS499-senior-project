@@ -16,9 +16,7 @@ const Home = () => {
         for (let i = 0; i < 5; i++){
           tempData.push({date:json['data'][i]['record_date'],amt:Number((json['data'][i]['tot_pub_debt_out_amt'])).toLocaleString()})
         }
-        console.log(tempData)
         setData(tempData)
-        console.log(data)
 
       })
       .catch((error) => console.error(`Error fetching data: ${error.message}`));
