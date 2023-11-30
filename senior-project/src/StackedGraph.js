@@ -19,7 +19,7 @@ const StackedGraph = ({data, width, s1, s2}) => {
               compactDisplay: "short",
               }).format(value)}
           />
-          <Tooltip />
+          <Tooltip formatter={(value) => new Intl.NumberFormat('en').format(value)}/>
           <Legend />
           <Bar dataKey={s1} fill="#8884d8" />
           <Bar dataKey={s2} fill="#82ca9d" />
