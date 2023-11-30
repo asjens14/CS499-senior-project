@@ -21,8 +21,8 @@ const Graph = ({data, width}) => {
           compactDisplay: "short",
         }).format(value)}
       />
-      <Tooltip />
-      <Bar dataKey="num" fill="#82ca9d" />
+      <Tooltip formatter={(value) => new Intl.NumberFormat('en').format(value)}/>
+      <Bar dataKey="amt" fill="#82ca9d" />
     </BarChart>
   </div>
   );
