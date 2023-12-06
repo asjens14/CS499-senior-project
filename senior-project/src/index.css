@@ -33,7 +33,7 @@ nav h1:hover{
 }
 .navbar a {
   float: left;
-  font-size: 16px;
+  font-size: 17px;
   color: #333;
   text-align: center;
   padding: 14px 16px;
@@ -85,8 +85,62 @@ nav h1:hover{
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
 /* mobile nav */
-.mobile-navbar {}
+.topnav {
+  overflow: hidden;
+  color: #333;
+  position: relative;
+}
+
+.topnav a {
+  color: #333;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  display: block;
+  border-top: 2px solid #f2f2f2;
+}
+
+.topnav a.icon {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+}
+
+/* .topnav a:hover {
+  background-color: #ddd;
+  color: black;
+} */
+
+
+/* .mobile-navbar {
+    overflow: hidden;
+    color: #333;
+    position: relative;
+} */
+.collapsed{
+  display:none;
+}
+.displayed{
+  display:block;
+}
+/* .mobile-navbar a {
+  color: #333;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  display: block;
+}
+.mobile-nav a.mobile-dropbtn {
+  background: black;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+} */
 
 
 /* content boxes */
@@ -129,6 +183,19 @@ nav h1:hover{
   padding: 8px;
   border-radius: 8px;
   cursor: pointer;
+}
+
+.btn {
+  background: #f1356d;
+  color: #fff;
+  border: 0;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.btn[disabled='']{
+  background: #908588;
+  cursor:auto;
 }
 
 .recharts-wrapper{
