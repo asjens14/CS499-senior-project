@@ -133,7 +133,10 @@ const YearCompareForm = () => {
       </div>
       <div className="content">
         <Graph data={ndata} width={1000}/>
-      </div>      
+      </div>
+      <div>
+        {/* district/county */}
+      </div>
     </div>
   );
 }
