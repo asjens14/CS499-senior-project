@@ -23,7 +23,45 @@ const YearCompareForm = () => {
     {amt: 1429923712.33, val:'2024'}
   ]);
   const [state,setState] = useState('AK')
+  const [districts,setDistricts] = useState([{dist:"AK-00",amt:136870523457.57}])
+  const [counties,setCounties] = useState([
+    {count:"Anchorage Municipality",amt:48223325052.53},
+    {count:"Fairbanks North Star Borough",amt:15488755970.22},
+    {count:"Juneau City And Borough",amt:10912410998.59},
+    {count:"Kenai Peninsula Borough",amt:5188345202.25},
+    {count:"Matanuska-Susitna Borough",amt:6464114417.18},
+    {count:"Kodiak Island Borough",amt:2374983558.53},
+    {count:"Southeast Fairbanks Census Area",amt:2053895195.5},
+    {count:"Ketchikan Gateway Borough",amt: 1602836071.79},
+    {count:"Bethel Census Area",amt: 3705854456.04},
+    {count:"Denali Borough",amt: 1798328009.15},
+    {count:"Yukon-Koyukuk Census Area",amt: 1370991952.95},
+    {count:"Sitka City And Borough",amt: 812206240.89},
+    {count:"Prince Of Wales-Hyder Census Area",amt: 973960090.21},
+    {count:"Nome Census Area",amt: 2100082069.33},
+    {count:"Northwest Arctic Borough",amt: 1637104194.16},
+    {count:"North Slope Borough",amt: 1806557067.78},
+    {count:"Petersburg Borough",amt: 410881576.83},
+    {count:"Aleutians West Census Area",amt: 1103011252.95},
+    {count:"Dillingham Census Area",amt: 1075488814.04},
+    {count:"Hoonah-Angoon Census Area",amt: 331141321.53},
+    {count:"Bristol Bay Borough",amt: 462826584.66},
+    {count:"Lake And Peninsula Borough",amt: 529242778.21},
+    {count:"Wrangell City And Borough",amt: 225447012.2},
+    {count:"Skagway Municipality",amt: 149163555.2},
+    {count:"Haines Borough",amt: 345357254.05},
+    {count:"Aleutians East Borough",amt: 443035622.84},
+    {count:"Yakutat City And Borough",amt: 196000132.68},
+    {count:"Kusilvak Census Area",amt: 662924927.61},
+    {count:"Chugach Census Area",amt: 269280159.54},
+    {count:"Copper River Census Area",amt: 313016328.07}
+  ])
 
+  function call(e){
+    getData(e)
+    getDistrict()
+    getCounties()
+  }
 
     async function getData(e) {
       e.preventDefault();
@@ -46,11 +84,10 @@ const YearCompareForm = () => {
         })})
       .then((response) => response.json())
       .then((json) => {
-        // TODO: parse data
-        
+        // TODO: parse data        
         let res = json['results'];
         for (let i = 0;i < res.length;i++){
-          console.log(res[i])
+          // console.log(res[i])
           const k = res[i]['time_period']['fiscal_year']
           const v = res[i]['aggregated_amount']
           data.push({val:k,amt:v})
@@ -66,15 +103,72 @@ const YearCompareForm = () => {
 
     }
 
+    async function getDistrict(){
+      await fetch('https://api.usaspending.gov/api/v2/search/spending_by_geography/',{
+      method:'POST',
+  
+      headers:{
+          'Accept':'application/json',
+          'Content-Type': 'application/json'
+      },
+      body:JSON.stringify({
+          "filters": {
+              "place_of_performance_locations":[{"country":"USA","state":state}]
+          },
+          "scope": "place_of_performance",
+          "geo_layer":"district"
+      })})
+    .then((response) => response.json())
+    .then((json) => {
+      // TODO: parse data
+      let temp = []
+      console.log(json)
+      for (let i = 0; i < json['results'].length;i++){
+        temp.push({dist:json['results'][i]['display_name'],amt:json['results'][i]['aggregated_amount']})
+      }
+      setDistricts(temp)
+    })
+    .catch((error) => console.error(`Error fetching data: ${error.message}`));}
+
+    async function getCounties(){
+      await fetch('https://api.usaspending.gov/api/v2/search/spending_by_geography/',{
+      method:'POST',
+  
+      headers:{
+          'Accept':'application/json',
+          'Content-Type': 'application/json'
+      },
+      body:JSON.stringify({
+          "filters": {
+              "place_of_performance_locations":[{"country":"USA","state":state}]
+          },
+          "scope": "place_of_performance",
+          "geo_layer":"county"
+      })})
+    .then((response) => response.json())
+    .then((json) => {
+      // TODO: parse data
+      console.log(json)
+      let temp = []
+      console.log(json)
+      for (let i = 0; i < json['results'].length;i++){
+        temp.push({count:json['results'][i]['display_name'],amt:json['results'][i]['aggregated_amount']})
+      }
+      setCounties(temp)
+    })
+    .catch((error) => console.error(`Error fetching data: ${error.message}`));
+  
+    }
+
   useEffect(()=>{
-    console.log(ndata)
-    console.log('set data')
+    // console.log(ndata)
+    // console.log('set data')
   },[ndata])
 
   return (
     <div>
       <div className="form">
-        <form onSubmit={getData}>
+        <form onSubmit={call}>
           <label>State</label>
           <select name="state" value={state} onChange={(e) => setState(e.target.value)}>
             <option value="AK">AK</option>
@@ -135,7 +229,33 @@ const YearCompareForm = () => {
         <Graph data={ndata} width={1000}/>
       </div>
       <div>
-        {/* district/county */}
+        <table className="records">
+          <tr>
+            <th>District</th>
+            <th>Total Aggregated Amount</th>
+          </tr>
+          {districts.map((record, i) => {
+            return(
+            <tr>
+              <td>{record.dist}</td>
+              <td>${Intl.NumberFormat().format(record.amt)}</td>
+            </tr>
+          )})}
+        </table>
+        <br />
+        <table className="records">
+          <tr>
+            <th>County</th>
+            <th>Total Aggregated Amount</th>
+          </tr>
+          {counties.map((record, i) => {
+            return(
+            <tr>
+              <td>{record.count}</td>
+              <td>${Intl.NumberFormat().format(record.amt)}</td>
+            </tr>
+          )})}
+        </table>
       </div>
     </div>
   );
