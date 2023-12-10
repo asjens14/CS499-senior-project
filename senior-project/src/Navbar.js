@@ -24,7 +24,7 @@ const Navbar = () => {
                 <Link to='year-compare'>Spending over time</Link>
                 <Link to='debt'>Debt</Link>
                 {/* <Link to='year-compare'>download</Link> */}
-                <Link to="agency-spending">Agencies</Link>
+                <Link to="agency-spending">Agency Spending</Link>
                 {/* <a href="">Disaster</a> */}
               </div>
               <a onClick={toggleClass} className='icon'><FontAwesomeIcon icon={faBars} /></a>{/*icon*/}
@@ -42,7 +42,7 @@ const Navbar = () => {
                   <Link to='year-compare'>Spending over time</Link>
                   <Link to='debt'>Debt</Link>
                   {/* <Link to='year-compare'>download</Link> */}
-                  <Link to="agency-spending">Agencies</Link>
+                  <Link to="agency-spending">Agency Spending</Link>
                   {/* <a href="disaster-spending">Disaster</a> */}
                 </div>
               </div>
